@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>User List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>User List</h1>
+        <div class="user-list">
+            {% if users %}
+                <ol>
+                    {% for user in users %}
+                        <li>User Info:</li>
+                            <ul>
+                                <li>{{ user.first_name }} </li>
+                                <li>{{ user.last_name }}</li>
+                                <li>{{ user.email }}</li>
+                            </ul>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>No users found.</p>
+            {% endif %}
+        </div>
+        <div>
+            <h1>Return to <a href="{% url 'index' %}">Home</a></h1>
+        </div>
+    </body>
+</html>

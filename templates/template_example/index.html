@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+{}
+ <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Django Learning</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Hello, Welcome!</h1>
+        <h2>Go to  <a href="{% url 'admin:index' %}">Admin</a></h2>
+        <h2>For user info go to <a href="{% url 'user_list' %}">User List</a></h2>
+        <h2>For form submission go to <a href="{% url 'form_name_view' %}">Form Page</a></h2>
+        <h2>For user signup go to <a href="{% url 'signup' %}">User Signup</a></h2>
+        <h2>{{ message | cut:"Hello"}}</h2>
+        <h2>{{number | add:10}}</h2>
+        <h2>Here are your access records:</h2>
+        <div class="records">
+            {% if access_records %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Site Name</th>
+                            <th>Access Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in access_records %}
+                            <tr>
+                                <td>{{ record.name }}</td>
+                                <td>{{ record.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No access records found.</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
